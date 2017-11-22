@@ -14,3 +14,39 @@ main {
   flex: 1 0 auto;
 }
     
+.collapsible>.collection-header {
+  padding-left: 32px;
+}
+
+.collection-header {
+  background-color: #fafafa;
+}
+
+.collection-header > h4 {
+  margin: 0!important;
+  padding: 1.52rem 0 .912rem 0;
+}
+
+.collapsible-header {
+  flex-direction: column;
+  padding-left: 48px!important; 
+}
+
+.collapsible-header:hover {
+  background-color: #fafafa;
+}
+
+.spoiler-button {
+  display: block;
+}
+
+.spoiler {
+  opacity: 0;
+  max-height: 0;
+}
+
+.spoiler.spoilt {
+  transition: 0.75s ease;
+  opacity: 1;
+  max-height: none;
+}
