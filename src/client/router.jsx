@@ -17,7 +17,8 @@ import { Home, Chat } from './pages';
 /**
  * CSS imports
  */
-import 'materialize-css/dist/css/materialize'
+import 'materialize-css/dist/css/materialize';
+import 'prismjs/themes/prism-coy';
 import './styles/main';
 
 

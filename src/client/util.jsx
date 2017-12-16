@@ -5,12 +5,13 @@ const self = (module.exports = {
   ajax: {
     get: endpoint => fetch(endpoint).then(resp => resp.json()),
   },
-  genItems: lessons => lessons.map(({ title, subtitle, outcomes, spoiler, day, presenter }) => (
+  genItems: lessons => lessons.map(({ title, subtitle, outcomes, spoiler, day, presenter, lang }) => (
     <ListItem 
       key={title}
       title={title}
       subtitle={subtitle}
       outcomes={outcomes}
+      language={lang}
       day={day}
       spoiler={spoiler}
       presenter={presenter}

@@ -1,4 +1,5 @@
 import React from 'react';
+import CodeSnippet from './code-snippet';
 
 export default ({ title, subtitle, outcomes, spoiler, day, presenter, language }) => (
   <li>
@@ -11,18 +12,19 @@ export default ({ title, subtitle, outcomes, spoiler, day, presenter, language }
       <p>{outcomes}</p>
       <div className="row">
         <a 
-          href="" 
+          href="#!" 
           data-reveals={title}
           className="btn waves-effect spoiler-button red darken-3"
         >
           Toggle Spoiler
         </a>
       </div>
-      <pre id={title} className={`card language-${language} spoiler`} data-hidden="true">
+      {/* <pre id={title} className={`card language-${language} spoiler`} data-hidden="true">
         <code className={`language-${language}`}>
   {spoiler}
         </code>
-      </pre>
+      </pre> */}
+<CodeSnippet lang={language} code={spoiler} />
     </div>
   </li>
 );

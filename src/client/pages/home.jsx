@@ -8,15 +8,16 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = { children: '' };
-    this.instances = {
-      collapsibles: [],
-    }
+    this.instances = { collapsibles: [] };
   }
 
+  /** 
+   * get data from the server 
+   */
   async componentWillMount() {
     const sessions = await ajax.get('/api/contentful/weeks');
-    const list = genList(sessions);
-    this.setState({ children: list });
+    const children = genList(sessions);
+    this.setState({ children });
   }
 
   /**

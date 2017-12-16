@@ -13,7 +13,7 @@ export default class Chat extends Component {
 
   updateQuestions(questions) {
     const parsed = questions.map(({question}) => (
-      <li className='collection-item'>{question}</li>
+      <li key={new Date() + question} className='collection-item'>{question}</li>
     ));
 
     const allQuestions = this.state.questions;
@@ -22,10 +22,12 @@ export default class Chat extends Component {
 
   }
 
-  sendQuestion() {
-    const question = this.textArea.value;
-    this.socket.emit('question', { question });
-    this.textArea.value = '';
+  sendQuestion({ key }) {
+    if (key === undefined || key === 'Enter') {
+      const question = this.textArea.value;
+      this.socket.emit('question', { question });
+      this.textArea.value = '';
+    }
   }
 
   render() {
@@ -40,7 +42,12 @@ export default class Chat extends Component {
           <form className="col s12">
             <div className="row">
               <div className="input-field col s12">
-                <textarea id="textarea" className="materialize-textarea" ref={text => this.textArea = text}></textarea>
+                <textarea 
+                  id="textarea" 
+                  className="materialize-textarea" 
+                  ref={text => this.textArea = text} 
+                  onKeyPress={this.sendQuestion}
+                />
                 <label htmlFor="textarea">Textarea</label>
               </div>
             </div>

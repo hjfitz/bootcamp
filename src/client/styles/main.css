@@ -60,3 +60,7 @@ main {
   flex-direction: column;
   height: inherit;
 }
+
+pre.card {
+  padding: 24px;
+}
