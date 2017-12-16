@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# ignore react-generated files
+public/bundle.js
+public/bundle.js.map
