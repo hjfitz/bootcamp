@@ -14,7 +14,6 @@ const app = express();
 const pub = path.join(__dirname, 'public');
 const index = path.join(pub, 'index.html');
 
-
 /**
  * express middleware
  */

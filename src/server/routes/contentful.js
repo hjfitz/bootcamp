@@ -30,14 +30,22 @@ const getSessions = getEntry('session');
  */
 contentfulApi.get('/weeks', async (req, res) => {
   const weeks = await getWeeks();
-  const parsedWeeks = weeks.map(week => week.fields)
+
+  // remove un-necessary sys object for smaller network transport
+  const parsedWeeks = weeks.map(week => week.fields);
+
+  // format sessions nicely
   parsedWeeks.forEach(week => {
-    // hacky removal of a getter
+    // remove sys object from sessions
     week.lessons = week.sessions
       .filter(session => 'fields' in session)
       .map(session => session.fields);
+
+    // :stophack:
     delete week.sessions;
   });
+
+  // stringify and send data
   res.json(parsedWeeks);
 });
 

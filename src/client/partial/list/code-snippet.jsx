@@ -1,16 +1,12 @@
 import React from 'react';
 import prism from 'prismjs';
 
-export default ({ code, lang }) => {
+export default ({ code, lang, id }) => {
   const language = prism.languages[lang];
   const __html = prism.highlight(code, language);
   return (
-    <div className="row">
-      <div className="col s12">
-        <pre className="card">
-          <code dangerouslySetInnerHTML={ {__html} } />
-        </pre>
-      </div>
-    </div>
+      <pre id={id} className="card spoiler">
+        <code dangerouslySetInnerHTML={ {__html} } />
+      </pre>
   );
 };

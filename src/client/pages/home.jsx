@@ -9,6 +9,7 @@ export default class Home extends Component {
     super(props);
     this.state = { children: '' };
     this.instances = { collapsibles: [] };
+    this.listenersSet = false;
   }
 
   /** 
@@ -24,19 +25,22 @@ export default class Home extends Component {
    * wait until we've rendered and then add fancy stuff
    */
   componentDidUpdate() {
-    const collapsibles = document.querySelectorAll('.collapsible');
-    collapsibles.forEach(collap => {
-      this.instances.collapsibles.push(new M.Collapsible(collap));
-    });
-
-    const spoilerButtons = document.querySelectorAll('.spoiler-button');
-    spoilerButtons.forEach(button => {
-      button.addEventListener('click', ({ target }) => {
-        const { reveals } = target.dataset;
-        const spoiler = document.getElementById(reveals);
-        spoiler.classList.toggle('spoilt');
+    if (!this.listenersSet) {
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach(collap => {
+        this.instances.collapsibles.push(new M.Collapsible(collap));
       });
-    });
+  
+      const spoilerButtons = document.querySelectorAll('.spoiler-button');
+      spoilerButtons.forEach(button => {
+        button.addEventListener('click', ({ target }) => {
+          const { reveals } = target.dataset;
+          const spoiler = document.getElementById(reveals);
+          spoiler.classList.toggle('spoilt');
+        });
+      });
+      this.listenersSet = true;
+    }
   }
 
   render() {

@@ -27621,7 +27621,7 @@ exports.default = ({ title, subtitle, outcomes, spoiler, day, presenter, languag
         'Toggle Spoiler'
       )
     ),
-    _react2.default.createElement(_codeSnippet2.default, { lang: language, code: spoiler })
+    _react2.default.createElement(_codeSnippet2.default, { lang: language, code: spoiler, id: title })
   )
 );
 
@@ -27646,21 +27646,13 @@ var _prismjs2 = _interopRequireDefault(_prismjs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = ({ code, lang }) => {
+exports.default = ({ code, lang, id }) => {
   const language = _prismjs2.default.languages[lang];
   const __html = _prismjs2.default.highlight(code, language);
   return _react2.default.createElement(
-    'div',
-    { className: 'row' },
-    _react2.default.createElement(
-      'div',
-      { className: 'col s12' },
-      _react2.default.createElement(
-        'pre',
-        { className: 'card' },
-        _react2.default.createElement('code', { dangerouslySetInnerHTML: { __html } })
-      )
-    )
+    'pre',
+    { id: id, className: 'card spoiler' },
+    _react2.default.createElement('code', { dangerouslySetInnerHTML: { __html } })
   );
 };
 
@@ -28575,6 +28567,7 @@ class Home extends _react.Component {
     super(props);
     this.state = { children: '' };
     this.instances = { collapsibles: [] };
+    this.listenersSet = false;
   }
 
   /** 
@@ -28590,19 +28583,22 @@ class Home extends _react.Component {
    * wait until we've rendered and then add fancy stuff
    */
   componentDidUpdate() {
-    const collapsibles = document.querySelectorAll('.collapsible');
-    collapsibles.forEach(collap => {
-      this.instances.collapsibles.push(new _materializeCss2.default.Collapsible(collap));
-    });
-
-    const spoilerButtons = document.querySelectorAll('.spoiler-button');
-    spoilerButtons.forEach(button => {
-      button.addEventListener('click', ({ target }) => {
-        const { reveals } = target.dataset;
-        const spoiler = document.getElementById(reveals);
-        spoiler.classList.toggle('spoilt');
+    if (!this.listenersSet) {
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach(collap => {
+        this.instances.collapsibles.push(new _materializeCss2.default.Collapsible(collap));
       });
-    });
+
+      const spoilerButtons = document.querySelectorAll('.spoiler-button');
+      spoilerButtons.forEach(button => {
+        button.addEventListener('click', ({ target }) => {
+          const { reveals } = target.dataset;
+          const spoiler = document.getElementById(reveals);
+          spoiler.classList.toggle('spoilt');
+        });
+      });
+      this.listenersSet = true;
+    }
   }
 
   render() {
@@ -54197,7 +54193,7 @@ exports = module.exports = __webpack_require__(30)(undefined);
 
 
 // module
-exports.push([module.i, ".link-card-title {\n  margin-top: 8px;\n  font-weight: 300;\n}\n\n\nbody {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n\nmain {\n  flex: 1 0 auto;\n}\n    \n.collapsible>.collection-header {\n  padding-left: 32px;\n}\n\n.collection-header {\n  background-color: #fafafa;\n}\n\n.collection-header > h4 {\n  margin: 0!important;\n  padding: 1.52rem 0 .912rem 0;\n}\n\n.collapsible-header {\n  flex-direction: column;\n  padding-left: 48px!important; \n}\n\n.collapsible-header:hover {\n  background-color: #fafafa;\n}\n\n.spoiler-button {\n  display: block;\n}\n\n.spoiler {\n  opacity: 0;\n  max-height: 0;\n}\n\n.spoiler.spoilt {\n  transition: 0.75s ease;\n  opacity: 1;\n  max-height: none;\n}\n\n#react {\n  height: 100%;\n}\n\n#react-app {\n  display: flex;\n  flex-direction: column;\n  height: inherit;\n}\n\npre.card {\n  padding: 24px;\n}", ""]);
+exports.push([module.i, ".link-card-title {\n  margin-top: 8px;\n  font-weight: 300;\n}\n\n\nbody {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n\nmain {\n  flex: 1 0 auto;\n}\n    \n.collapsible>.collection-header {\n  padding-left: 32px;\n}\n\n.collection-header {\n  background-color: #fafafa;\n}\n\n.collection-header > h4 {\n  margin: 0!important;\n  padding: 1.52rem 0 .912rem 0;\n}\n\n.collapsible-header {\n  flex-direction: column;\n  padding-left: 48px!important; \n}\n\n.collapsible-header:hover {\n  background-color: #fafafa;\n}\n\n.spoiler-button {\n  display: block;\n}\n\n.spoiler {\n  opacity: 0;\n  max-height: 0;\n}\n\n.spoiler.spoilt {\n  transition: 0.75s ease;\n  opacity: 1;\n  max-height: none;\n}\n\n#react {\n  height: 100%;\n}\n\n#react-app {\n  display: flex;\n  flex-direction: column;\n  height: inherit;\n}\n\npre.card {\n  padding: 24px;\n  overflow-y: hidden;\n  overflow-x: scroll;\n}", ""]);
 
 // exports
 

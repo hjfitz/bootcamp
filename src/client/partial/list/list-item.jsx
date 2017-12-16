@@ -19,12 +19,7 @@ export default ({ title, subtitle, outcomes, spoiler, day, presenter, language }
           Toggle Spoiler
         </a>
       </div>
-      {/* <pre id={title} className={`card language-${language} spoiler`} data-hidden="true">
-        <code className={`language-${language}`}>
-  {spoiler}
-        </code>
-      </pre> */}
-<CodeSnippet lang={language} code={spoiler} />
+<CodeSnippet lang={language} code={spoiler} id={title} />
     </div>
   </li>
 );
