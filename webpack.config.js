@@ -1,17 +1,6 @@
 const path = require('path');
 const output = path.join(__dirname, 'public');
 
-const babel =  {
-  test: /\.jsx?$/,
-  exclude: /node_modules/,
-  loader: 'babel-loader',
-  query: {
-    presets: [
-      ['env', { targets: { browsers: ['ie 11'] } }],
-      'react',
-    ]
-  }
-};
 
 module.exports = {
   entry: { bundle: ['./src/client/router.jsx']  },
@@ -21,7 +10,30 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".webpack.js", ".js", ".jsx", ".json"]
+    extensions: [".js", ".jsx", ".json", ".css"]
   },
-  module: { loaders: [babel] }
+  module: { 
+    loaders: [ 
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            ['env', { targets: { 
+              browsers: [
+                'chrome > 60',
+                'not ie < 10'
+              ] 
+            } }],
+            'react',
+          ]
+        }
+      } 
+    ] 
+  }
 }
