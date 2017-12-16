@@ -11,8 +11,8 @@ const api = require('./src/server/routes');
  * app vars
  */
 const app = express();
-const index = path.join(__dirname, 'index.html');
 const pub = path.join(__dirname, 'public');
+const index = path.join(pub, 'index.html');
 
 
 /**
