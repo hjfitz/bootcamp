@@ -29,8 +29,8 @@ const app = (
   <Router onUpdate={onUpdate}>
     <Switch>
       <Layout>
-        <Route path="/" component={Home} />
-        <Route path="/chat" component={Chat} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/chat" component={Chat} />
       </Layout>
     </Switch>
   </Router>

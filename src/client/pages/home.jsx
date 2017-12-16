@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import M from 'materialize-css';
 import { ajax, genList } from '../util';
+import { Hero } from '../partial';
 
 export default class Home extends Component {
   constructor(props) {
@@ -38,7 +39,12 @@ export default class Home extends Component {
   }
 
   render() {
-    return this.state.children;
+    return (
+      <div>
+        <Hero />
+        {this.state.children}
+      </div>
+    );
   }
   
 }
