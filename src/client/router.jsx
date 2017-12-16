@@ -17,11 +17,14 @@ import { Home, Chat } from './pages';
 /**
  * CSS imports
  */
-import 'materialize-css/dist/css/materialize.css'
-import './style';
+import 'materialize-css/dist/css/materialize'
+import './styles/main';
 
+
+// ensure that, on a new page, we scroll to the top
 const onUpdate = () => window.scrollTo(0, 0);
 
+// define our router
 const app = (
   <Router onUpdate={onUpdate}>
     <Switch>
@@ -33,6 +36,8 @@ const app = (
   </Router>
 );
 
+// get the entry point
 const entry = document.getElementById('react');
 
+// render
 ReactDOM.render(app, entry);

@@ -2835,6 +2835,9 @@ __webpack_require__(97);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// ensure that, on a new page, we scroll to the top
+
+
 /**
  * CSS imports
  */
@@ -2843,11 +2846,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** 
 * local imports
 */
-const onUpdate = () => window.scrollTo(0, 0); /**
-                                               * main imports
-                                               */
+const onUpdate = () => window.scrollTo(0, 0);
 
-
+// define our router
+/**
+ * main imports
+ */
 const app = _react2.default.createElement(
   _reactRouterDom.BrowserRouter,
   { onUpdate: onUpdate },
@@ -2863,8 +2867,10 @@ const app = _react2.default.createElement(
   )
 );
 
+// get the entry point
 const entry = document.getElementById('react');
 
+// render
 _reactDom2.default.render(app, entry);
 
 /***/ }),
@@ -46785,8 +46791,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./style.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./style.css");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!./main.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!./main.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
