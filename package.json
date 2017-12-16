@@ -1,0 +1,30 @@
+{
+  "name": "bootcamp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/hjfitz/bootcamp",
+  "author": "Harry <hfitz83@gmail.com>",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "compression": "^1.7.1",
+    "contentful": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "local-env-var": "^1.0.5",
+    "materialize-css": "^1.0.0-alpha.2",
+    "morgan": "^1.9.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "source-map": "^0.6.1",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
+  }
+}
