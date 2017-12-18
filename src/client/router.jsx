@@ -12,7 +12,7 @@ import {
 * local imports
 */
 import Layout from './layout';
-import { Home, Chat } from './pages';
+import { Home, Chat, Faq, Cheat } from './pages';
 
 /**
  * CSS imports
@@ -32,6 +32,8 @@ const app = (
       <Layout>
         <Route exact path="/" component={Home} />
         <Route exact path="/chat" component={Chat} />
+        <Route exact path="/faq" component={Faq} />
+        <Route exact path="/cheatsheets" component={Cheat} />
       </Layout>
     </Switch>
   </Router>

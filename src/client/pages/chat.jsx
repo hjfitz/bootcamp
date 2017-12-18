@@ -34,6 +34,9 @@ export default class Chat extends Component {
     return (
       <div>
         <div className="row">
+          <h1>Anonymous Chat</h1>
+        </div>
+        <div className="row">
           <ul className="collection" id='questions'>
             {this.state.questions}
           </ul>
@@ -48,12 +51,12 @@ export default class Chat extends Component {
                   ref={text => this.textArea = text} 
                   onKeyPress={this.sendQuestion}
                 />
-                <label htmlFor="textarea">Textarea</label>
+                <label htmlFor="textarea">Question</label>
               </div>
             </div>
           </form>
         </div>
-        <a onClick={this.sendQuestion} className="waves-effect waves-light btn" id='submit'>button</a>
+        <a onClick={this.sendQuestion} className="waves-effect waves-light btn red darken-3" id='submit'>Send</a>
       </div>
     )
   }

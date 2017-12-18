@@ -52,7 +52,7 @@ main {
 }
 
 #react {
-  height: 100%;
+  height: 100vh;
 }
 
 #react-app {
