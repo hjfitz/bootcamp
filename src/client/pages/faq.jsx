@@ -10,7 +10,8 @@ export default () => (
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum, excepturi, ut similique laboriosam repudiandae facere voluptatum nam nisi iusto aperiam eaque, tempora tempore officiis asperiores non iste molestiae. Dolorem.</p>                
+                        <p>The bootcamp is at 1pm evreyday for two weeks, between 15th-26th Jan.</p>
+                        <p>The hackathon is the following Friday, all day.</p>
                     </div>
                 </div>
             </div>
@@ -20,17 +21,35 @@ export default () => (
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum, excepturi, ut similique laboriosam repudiandae facere voluptatum nam nisi iusto aperiam eaque, tempora tempore officiis asperiores non iste molestiae. Dolorem.</p>                
+                        <h4>You will need:</h4>
+                        <ul className="collection">
+                            <li className="collection-item">Yourself</li>
+                            <li className="collection-item">Caffeine (programmers turn caffeine to code)</li>
+                            <li className="collection-item">A laptop (Mac, PC or Linux)</li>
+                            <li className="collection-item">A text editor is also recommended</li>
+                        </ul>
+                        <h4>The following text editors are also recommended:</h4>
+                        <ul className="collection">
+                            <li className="collection-item"><a href="https://www.atom.io">atom</a></li>
+                            <li className="collection-item"><a href="https://code.visualstudio.com">Visual Studio Code</a></li>   
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div className="row">
-            <h2>Who Can I Support For Help?</h2>
+            <h2>Who Can I ask for Support or Help?</h2>
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum, excepturi, ut similique laboriosam repudiandae facere voluptatum nam nisi iusto aperiam eaque, tempora tempore officiis asperiores non iste molestiae. Dolorem.</p>                
+                    <p>Any of the developers (+Phil)</p>
+                    <ul className="collection">
+                        <li className="collection-item"><a href="mailto:fitzgerald_harry@network.lilly.com">Harry</a></li>
+                        <li className="collection-item"><a href="mailto:sandford_philip@network.lilly.com">Phil</a></li>
+                        <li className="collection-item"><a href="mailto:stenton_samuel@network.lilly.com">Sam Stenton</a></li>
+                        <li className="collection-item"><a href="mailto:theobald_sam@network.lilly.com">Sam Theobald</a></li>
+                        <li className="collection-item"><a href="mailto:blore_peter@network.lilly.com">Peter Blore</a></li>
+                    </ul>
                     </div>
                 </div>
             </div>
@@ -40,7 +59,7 @@ export default () => (
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum, excepturi, ut similique laboriosam repudiandae facere voluptatum nam nisi iusto aperiam eaque, tempora tempore officiis asperiores non iste molestiae. Dolorem.</p>                
+                    <p>Of course not! There's no point in going if you're already confident with the content covered.</p>
                     </div>
                 </div>
             </div>
@@ -50,7 +69,7 @@ export default () => (
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum, excepturi, ut similique laboriosam repudiandae facere voluptatum nam nisi iusto aperiam eaque, tempora tempore officiis asperiores non iste molestiae. Dolorem.</p>                
+                        <p>You get to add 10 songs of your choice to the playlist used in the hackathon</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +79,7 @@ export default () => (
             <div className="col s12">
                 <div className="card">
                     <div className="card-content">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non laudantium eaque veritatis optio perferendis nesciunt totam fuga excepturi, architecto iure rem provident dolores minus reiciendis corporis consequuntur deleniti autem in?</p>
+                        <p>A laptop, and the ability to type</p>
                     </div>
                 </div>
             </div>

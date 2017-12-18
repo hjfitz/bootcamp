@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
 import { Link } from 'react-router-dom';
-
-const links = [
-    <li><Link to="/cheatsheets">Cheatsheets</Link></li>,
-    <li><Link to="/chat">Anonymous questions</Link></li>,
-    <li><Link to='/faq'>Hackathon FAQ</Link></li>,
-    <li><a href="https://github.com/hjfitz/bootcamp">Github</a></li>,
-];
+import links from './navigation';
 
 export default class Header extends Component {
   constructor(props) {
@@ -17,7 +11,6 @@ export default class Header extends Component {
   componentDidMount() {
     const { sidenav } = this;
     const instance = new M.Sidenav(sidenav);
-    console.log(instance);
   }
 
   render() {

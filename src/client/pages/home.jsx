@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import M from 'materialize-css';
 import { ajax, genList } from '../util';
-import { Hero } from '../partial';
+import { Hero, Loading } from '../partial';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { children: '' };
+    this.state = { children: <Loading /> };
     this.instances = { collapsibles: [] };
     this.listenersSet = false;
   }
