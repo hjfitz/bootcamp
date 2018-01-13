@@ -175,3 +175,17 @@ nav > .after.hover {
 .page-footer {
   padding-top: 0;
 }
+
+.hidden {
+  display: none;
+}
+
+.files {
+  display: flex;
+  flex-direction: row;
+}
+
+.files > div {
+  flex: 1;
+  text-align: center;
+}

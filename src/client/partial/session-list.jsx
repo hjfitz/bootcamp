@@ -42,13 +42,34 @@ export default class SessionList extends Component {
 
   setSession(subtitle, outcomes, startPoint, endPoint) {
     const { url: startFile } = startPoint.fields.file;
+    const startUrl = window.location.protocol + startFile;
     const { url: endFile } = endPoint.fields.file;
+    const endUrl = window.location.protocol + endFile;
     const parsed = { __html: marked(outcomes) };
-    const newContent = [
+    const visibleSession = [
       <h1>{subtitle}</h1>,
       <div dangerouslySetInnerHTML={parsed} />,
     ];
-    this.setState({ visibleSession: newContent });
+    const files = {
+      start: (
+        <a href={startUrl} download>
+          <div className="download-item">
+            <i className="material-icons">file_download</i>
+            <p>Starting file</p>
+          </div>
+        </a>
+      ),
+      end: (
+        <a href={endUrl} download>
+          <div className="download-item">
+            <i className="material-icons">file_download</i>
+            <p>Completed file</p>
+          </div>
+        </a>
+      ),
+    };
+
+    this.setState({ visibleSession, files });
   }
   setList(listItems, ev) {
     const elems = document.getElementsByClassName('tab');
@@ -58,7 +79,22 @@ export default class SessionList extends Component {
   }
 
   render() {
-    const { visibleSession, sessionLists, visibleItems } = this.state;
+    const {
+      visibleSession, sessionLists, visibleItems, files,
+    } = this.state;
+    let downloads;
+    if (files) {
+      downloads = (
+        <div className="files">
+          <div className="start">
+            {files.start}
+          </div>
+          <div className="end">
+            {files.end}
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="session-list card">
         <div className="main-list">
@@ -71,6 +107,7 @@ export default class SessionList extends Component {
         </div>
         <div className="session">
           {visibleSession}
+          {downloads}
         </div>
       </div>
     );

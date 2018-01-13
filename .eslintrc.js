@@ -11,7 +11,8 @@ module.exports = {
     "import/extensions": 0,
     "arrow-parens": ["error", "as-needed"],
     "react/no-danger": 0,
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "jsx-a11y/anchor-has-content": 0
   },
   "env": {
    "browser": true,
