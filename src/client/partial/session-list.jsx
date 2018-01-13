@@ -11,7 +11,6 @@ export default class SessionList extends Component {
       sessionLists: '',
       visibleItems: '',
     };
-    this.tabs = {};
     this.setSession = this.setSession.bind(this);
   }
 
@@ -31,8 +30,8 @@ export default class SessionList extends Component {
         return curLesson;
       });
       return (
-        <li>
-          <a href="#!" onClick={() => this.setList(listItems)} ref={item => this.tabs[item] = item}>
+        <li className="tab">
+          <a href="#!" onClick={ev => this.setList(listItems, ev)}>
             {title}
           </a>
         </li>
@@ -42,26 +41,29 @@ export default class SessionList extends Component {
   }
 
   setSession(subtitle, outcomes, startPoint, endPoint) {
+    const { url: startFile } = startPoint.fields.file;
+    const { url: endFile } = endPoint.fields.file;
     const parsed = { __html: marked(outcomes) };
-    const newContent = (
-      <div className="session">
-        <h1>{subtitle}</h1>
-        <div dangerouslySetInnerHTML={parsed} />
-      </div>
-    );
+    const newContent = [
+      <h1>{subtitle}</h1>,
+      <div dangerouslySetInnerHTML={parsed} />,
+    ];
     this.setState({ visibleSession: newContent });
   }
-  setList(listItems) {
+  setList(listItems, ev) {
+    const elems = document.getElementsByClassName('tab');
+    Array.from(elems).forEach(elem => elem.classList.remove('active'));
+    ev.target.parentElement.classList.add('active');
     this.setState({ visibleItems: <ul>{listItems}</ul> });
   }
 
   render() {
     const { visibleSession, sessionLists, visibleItems } = this.state;
     return (
-      <div className="session-list">
+      <div className="session-list card">
         <div className="main-list">
           <div className="list-tabs">
-            <ul className="tabs">{sessionLists}</ul>
+            <ul className="tabs" ref={tabs => this.tabs = tabs}>{sessionLists}</ul>
             <div className="items">
               {visibleItems}
             </div>

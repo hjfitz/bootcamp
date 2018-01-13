@@ -17,10 +17,10 @@ export default class Header extends Component {
   }
 
   /**
-   * We can be sure that this.after is mounted 
+   * We can be sure that this.after is mounted
    * as this will only be invoked after componentDidMount()
-   * 
-   * Setting the state with each scroll seems bad, 
+   *
+   * Setting the state with each scroll seems bad,
    * but a reflow only occurs when state differs
    */
   scrolledPast() {
@@ -28,8 +28,8 @@ export default class Header extends Component {
     const { height } = this.nav.getBoundingClientRect();
     if (top <= 0) {
       this.setState({ hoverBar: true });
-    } 
-    if ( window.scrollY < height) {
+    }
+    if (window.scrollY < height) {
       this.setState({ hoverBar: false });
     }
   }
@@ -38,7 +38,7 @@ export default class Header extends Component {
     const className = this.state.hoverBar ? 'after hover' : 'after';
     return (
       <nav ref={nav => this.nav = nav}>
-        <Link to='/' className="logo">IT Bootcamp</Link>
+        <Link to="/" className="logo">IT Bootcamp</Link>
         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <ul className="right hide-on-med-and-down">{links}</ul>
         <ul className="sidenav" id="mobile-demo" ref={nav => this.sidenav = nav}>{links}</ul>
