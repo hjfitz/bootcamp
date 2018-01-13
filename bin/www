@@ -10,6 +10,7 @@ require('local-env-var')();
 
 // load our server stuff
 const app = require('../app');
+const logger = require('../src/server/logger')('www');
 const socket = require('../src/server/socket');
 
 // default to a given port
@@ -29,4 +30,4 @@ socket.init(server);
 
 // inform us of the running server
 /* eslint-disable */
-server.on("listening", () => console.log(`Server running on port http://localhost:${port}`));
+server.on("listening", () => logger(`running on port http://localhost:${port}`));
