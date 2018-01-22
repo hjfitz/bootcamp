@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import M from 'materialize-css';
-import { ajax, genList } from '../util';
-import { Hero, Loading } from '../partial';
+import { ajax } from '../util';
+import { Loading, SessionList } from '../partial';
 
 export default class Home extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ export default class Home extends Component {
     this.listenersSet = false;
   }
 
-  /** 
-   * get data from the server 
+  /**
+   * get data from the server
    */
   async componentWillMount() {
     const sessions = await ajax.get('/api/contentful/weeks');
-    const children = genList(sessions);
+    // const children = genList(sessions);
+    const children = <SessionList sessions={sessions} />;
     this.setState({ children });
   }
 
@@ -30,7 +31,7 @@ export default class Home extends Component {
       collapsibles.forEach(collap => {
         this.instances.collapsibles.push(new M.Collapsible(collap));
       });
-  
+
       const spoilerButtons = document.querySelectorAll('.spoiler-button');
       spoilerButtons.forEach(button => {
         button.addEventListener('click', ({ target }) => {
@@ -46,10 +47,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Hero />
         {this.state.children}
       </div>
     );
   }
-  
 }

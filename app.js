@@ -2,10 +2,11 @@
  * main imports
  */
 const express = require('express');
-const logger = require('morgan')('dev');
+const logger = require('morgan')('[EXPRESS] :method :url :status :response-time ms - :res[content-length]');
 const compression = require('compression')();
 const path = require('path');
 const api = require('./src/server/routes');
+// const logger = require('./src/server/logger')('express');
 
 /**
  * app vars
