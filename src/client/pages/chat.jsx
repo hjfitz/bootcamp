@@ -12,14 +12,13 @@ export default class Chat extends Component {
   }
 
   updateQuestions(questions) {
-    const parsed = questions.map(({question}) => (
-      <li key={new Date() + question} className='collection-item'>{question}</li>
+    const parsed = questions.map(({ question }) => (
+      <li key={new Date() + question} className="collection-item">{question}</li>
     ));
 
     const allQuestions = this.state.questions;
     allQuestions.push(...parsed);
     this.setState({ questions: allQuestions });
-
   }
 
   sendQuestion({ key }) {
@@ -37,7 +36,7 @@ export default class Chat extends Component {
           <h1>Anonymous Chat</h1>
         </div>
         <div className="row">
-          <ul className="collection" id='questions'>
+          <ul className="collection" id="questions">
             {this.state.questions}
           </ul>
         </div>
@@ -45,19 +44,19 @@ export default class Chat extends Component {
           <form className="col s12">
             <div className="row">
               <div className="input-field col s12">
-                <textarea 
-                  id="textarea" 
-                  className="materialize-textarea" 
-                  ref={text => this.textArea = text} 
+                <label htmlFor="textarea">Question</label>
+                <textarea
+                  id="textarea"
+                  className="materialize-textarea"
+                  ref={text => this.textArea = text}
                   onKeyPress={this.sendQuestion}
                 />
-                <label htmlFor="textarea">Question</label>
               </div>
             </div>
           </form>
         </div>
-        <a onClick={this.sendQuestion} className="waves-effect waves-light btn red darken-3" id='submit'>Send</a>
+        <a href="#!" onClick={this.sendQuestion} className="waves-effect waves-light btn red darken-3" id="submit">Send</a>
       </div>
-    )
+    );
   }
 }

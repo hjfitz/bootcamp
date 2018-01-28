@@ -3,24 +3,23 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { 
+import {
   BrowserRouter as Router,
   Switch,
   Route } from 'react-router-dom';
 
-/** 
+/**
 * local imports
 */
 import Layout from './layout';
-import { Home, Chat, Faq, Cheat } from './pages';
+import { Home, Chat, Faq } from './pages';
 
 /**
  * CSS imports
  */
+/* eslint-ignore */
 import 'materialize-css/dist/css/materialize';
-import 'prismjs/themes/prism-coy';
 import './styles/main';
-
 
 // ensure that, on a new page, we scroll to the top
 const onUpdate = () => window.scrollTo(0, 0);
@@ -33,7 +32,6 @@ const app = (
         <Route exact path="/" component={Home} />
         <Route exact path="/chat" component={Chat} />
         <Route exact path="/faq" component={Faq} />
-        <Route exact path="/cheatsheets" component={Cheat} />
       </Layout>
     </Switch>
   </Router>

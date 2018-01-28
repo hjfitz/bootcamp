@@ -1,1 +1,1 @@
-module.exports = (prefix) => (msg) => console.log(`[${prefix.toUpperCase()}] ${msg}`);
+module.exports = prefix => msg => console.log(`[${prefix.toUpperCase()}] ${msg}`);

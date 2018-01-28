@@ -1,7 +1,6 @@
 
 /**
  * Keep the server in it's own file.
- * Eventually, we will add a socket server for the chat app
  */
 
 // main deps

@@ -1,7 +1,7 @@
 import React from 'react';
 import CodeSnippet from './code-snippet';
 
-export default ({ title, subtitle, outcomes, spoiler, day, presenter, language }) => (
+export default ({ title, subtitle, outcomes, spoiler, day, language }) => (
   <li>
     <div className="collapsible-header">
       <span className="title">{day}</span>
@@ -11,15 +11,15 @@ export default ({ title, subtitle, outcomes, spoiler, day, presenter, language }
       <span className="title">Outcomes:</span>
       <p>{outcomes}</p>
       <div className="row">
-        <a 
-          href="#!" 
+        <a
+          href="#!"
           data-reveals={title}
           className="btn waves-effect spoiler-button red darken-3"
         >
           Toggle Spoiler
         </a>
       </div>
-<CodeSnippet lang={language} code={spoiler} id={title} />
+      <CodeSnippet lang={language} code={spoiler} id={title} />
     </div>
   </li>
 );

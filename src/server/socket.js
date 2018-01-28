@@ -4,11 +4,11 @@ const logger = require('./logger')('socket');
 const questions = [];
 const sockets = [];
 
-function emitAll(type, payload) {
-  sockets.map((sck) => sck.emit(type, payload));
-}
+const emitAll = (type, payload) => {
+  sockets.map(sck => sck.emit(type, payload));
+};
 
-function conn(sck) {
+const conn = sck => {
   logger(`${sck.id} connected`);
 
   // update the list of websocket clients
@@ -24,25 +24,24 @@ function conn(sck) {
   // add an event listener for a question
   // on a question, update the total list
   // and emit the question to all clients.
-  sck.on('question', (data) => {
+  sck.on('question', data => {
     logger('Question GET');
     questions.push(data);
     emitAll('question', [data]);
   });
 
-  sck.on('disconnect', (reason) => {
+  sck.on('disconnect', reason => {
     const index = sockets.indexOf(sck);
     if (index !== -1) sockets.splice(index, 1);
     logger(`${sck.id} disconnected.`);
     logger(`${sockets.length} sockets remain`);
   });
-}
+};
 
-function init(server) {
+exports.init = server => {
   // initialise the server
   const sock = io(server);
   // add event listeners
   sock.on('connection', conn);
-}
+};
 
-module.exports = {init};
