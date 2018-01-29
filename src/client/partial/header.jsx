@@ -8,11 +8,11 @@ export default class Header extends Component {
     super(props);
     this.state = { hoverBar: false };
     this.scrolledPast = this.scrolledPast.bind(this);
+    this.instances = [];
   }
 
   componentDidMount() {
-    const { sidenav } = this;
-    const instance = new M.Sidenav(sidenav);
+    this.instances.push(new M.Sidenav(this.sidenav));
     window.addEventListener('scroll', this.scrolledPast);
   }
 
@@ -38,8 +38,10 @@ export default class Header extends Component {
     const className = this.state.hoverBar ? 'after hover' : 'after';
     return (
       <nav ref={nav => this.nav = nav}>
-        <Link to="/" className="logo">IT Bootcamp</Link>
-        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+        <Link to="/" href="#!" className="logo">IT Bootcamp</Link>
+        <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
+          <i className="material-icons">menu</i>
+        </a>
         <ul className="right hide-on-med-and-down">{links}</ul>
         <ul className="sidenav" id="mobile-demo" ref={nav => this.sidenav = nav}>{links}</ul>
         <div className={className} ref={after => this.after = after} />

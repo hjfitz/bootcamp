@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import M from 'materialize-css';
 import { ajax } from '../util';
 import { Loading, SessionList } from '../partial';
