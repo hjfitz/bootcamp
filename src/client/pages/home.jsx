@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import M from 'materialize-css';
 import { ajax } from '../util';
 import { Loading, SessionList } from '../partial';
 
@@ -19,28 +18,6 @@ export default class Home extends Component {
     // const children = genList(sessions);
     const children = <SessionList sessions={sessions} />;
     this.setState({ children });
-  }
-
-  /**
-   * wait until we've rendered and then add fancy stuff
-   */
-  componentDidUpdate() {
-    if (!this.listenersSet) {
-      const collapsibles = document.querySelectorAll('.collapsible');
-      collapsibles.forEach(collap => {
-        this.instances.collapsibles.push(new M.Collapsible(collap));
-      });
-
-      const spoilerButtons = document.querySelectorAll('.spoiler-button');
-      spoilerButtons.forEach(button => {
-        button.addEventListener('click', ({ target }) => {
-          const { reveals } = target.dataset;
-          const spoiler = document.getElementById(reveals);
-          spoiler.classList.toggle('spoilt');
-        });
-      });
-      this.listenersSet = true;
-    }
   }
 
   render() {

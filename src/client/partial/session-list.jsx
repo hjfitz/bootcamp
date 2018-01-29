@@ -23,6 +23,7 @@ export default class SessionList extends Component {
       visibleItems: '',
     };
     this.setSession = this.setSession.bind(this);
+    this.listSets = [];
   }
 
   /**
@@ -46,6 +47,7 @@ export default class SessionList extends Component {
         );
       });
       const onClick = ev => this.setList(listItems, ev);
+      this.listSets.push(onClick);
       return (
         <li className="tab">
           <a href="#!" onClick={onClick}>
@@ -57,6 +59,10 @@ export default class SessionList extends Component {
     this.setState({ sessionLists });
   }
 
+  componentDidMount() {
+    this.listSets[0]();
+  }
+
   /**
    * Sets the session in the righthand box
    * @param {string} subtitle title for each session
@@ -66,38 +72,44 @@ export default class SessionList extends Component {
    */
   setSession(subtitle, outcomes, startPoint, endPoint) {
     // generate links to download files
-    const { url: startFile } = startPoint.fields.file;
-    const startUrl = window.location.protocol + startFile;
-    const { url: endFile } = endPoint.fields.file;
-    const endUrl = window.location.protocol + endFile;
-
+    
     // parse some markdown
     const parsed = { __html: marked(outcomes) };
     const visibleSession = [
       <h1>{subtitle}</h1>,
       <div dangerouslySetInnerHTML={parsed} />,
     ];
-
-    // generate some file download links
-    const files = {
-      start: (
-        <a href={startUrl} download>
-          <div className="download-item">
-            <i className="material-icons">file_download</i>
-            <p>Starting file</p>
-          </div>
-        </a>
-      ),
-      end: (
-        <a href={endUrl} download>
-          <div className="download-item">
-            <i className="material-icons">file_download</i>
-            <p>Completed file</p>
-          </div>
-        </a>
-      ),
-    };
-    this.setState({ visibleSession, files });
+    
+    let startUrl;
+    let endUrl;
+    if (startPoint) {
+      const { url: startFile } = startPoint.fields.file;
+      startUrl = window.location.protocol + startFile;
+      const { url: endFile } = endPoint.fields.file;
+      endUrl = window.location.protocol + endFile;
+      
+      // generate some file download links
+      const files = {
+        start: (
+          <a href={startUrl} download>
+            <div className="download-item">
+              <i className="material-icons">file_download</i>
+              <p>Starting file</p>
+            </div>
+          </a>
+        ),
+        end: (
+          <a href={endUrl} download>
+            <div className="download-item">
+              <i className="material-icons">file_download</i>
+              <p>Completed file</p>
+            </div>
+          </a>
+        ),
+      };
+      return this.setState({ visibleSession, files });
+    }
+    return this.setState({ visibleSession });
   }
 
   /**
@@ -106,9 +118,11 @@ export default class SessionList extends Component {
    * @param {Event} ev Event from click
    */
   setList(listItems, ev) {
-    const elems = document.getElementsByClassName('tab');
-    Array.from(elems).forEach(elem => elem.classList.remove('active'));
-    ev.target.parentElement.classList.add('active');
+    if (ev) {
+      const elems = document.getElementsByClassName('tab');
+      Array.from(elems).forEach(elem => elem.classList.remove('active'));
+      ev.target.parentElement.classList.add('active');
+    }
     this.setState({ visibleItems: <ul>{listItems}</ul> });
   }
 
