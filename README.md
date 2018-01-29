@@ -16,14 +16,14 @@
 
 - [ ] JS [**Monday**] Refresher and functions: **Stenton**
 
-- [ ] JS [**Tuesday**] Introduction to DOM Manipulation **Harry**
+- [ ] JS [**Tuesday**] Introduction to AJAX **Stenton**
 
 **Wednesday spent in Erl Wood**
 
-- [ ] JS [**Thursday**] Continued DOM Manipulation: **Harry**
+- [ ] JS [**Thursday**] Continued AJAX: **Harry**
 
-- [ ] JS [**Friday**] Refresher and Intro to AJAX: **:b:eter**
+- [ ] JS [**Friday**] Intro to DOM Manipulation: **Peter**
 
 ## Week 3
 
-- [ ] JS [**Monday**] Continued AJAX and Thanks: **Stenton**  (et labs)
+- [ ] JS [**Monday**] Continued DOM and Thanks: **Harry**  (et labs)
