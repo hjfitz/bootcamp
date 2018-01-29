@@ -26,11 +26,17 @@ const conn = sck => {
   // and emit the question to all clients.
   sck.on('question', data => {
     logger('Question GET');
-    questions.push(data);
-    emitAll('question', [data]);
+    logger(data.question);
+    if (data.question === '/clean') {
+      questions.length = 0;
+      sck.emit('cleanup');
+    } else {
+      questions.push(data);
+      emitAll('question', [data]);
+    }
   });
 
-  sck.on('disconnect', reason => {
+  sck.on('disconnect', () => {
     const index = sockets.indexOf(sck);
     if (index !== -1) sockets.splice(index, 1);
     logger(`${sck.id} disconnected.`);

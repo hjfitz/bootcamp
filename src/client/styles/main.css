@@ -194,3 +194,7 @@ nav > .after.hover {
 #react-app {
   background-color: #fafafa;
 }
+
+.chat-button {
+  background: linear-gradient(to right, #4568dc, #b06ab3); 
+}

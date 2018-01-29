@@ -72,14 +72,14 @@ export default class SessionList extends Component {
    */
   setSession(subtitle, outcomes, startPoint, endPoint) {
     // generate links to download files
-    
+
     // parse some markdown
     const parsed = { __html: marked(outcomes) };
     const visibleSession = [
       <h1>{subtitle}</h1>,
       <div dangerouslySetInnerHTML={parsed} />,
     ];
-    
+
     let startUrl;
     let endUrl;
     if (startPoint) {
@@ -87,7 +87,7 @@ export default class SessionList extends Component {
       startUrl = window.location.protocol + startFile;
       const { url: endFile } = endPoint.fields.file;
       endUrl = window.location.protocol + endFile;
-      
+
       // generate some file download links
       const files = {
         start: (
