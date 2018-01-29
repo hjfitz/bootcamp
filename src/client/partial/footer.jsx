@@ -1,5 +1,4 @@
 import React from 'react';
-import links from './navigation';
 
 export default () => (
   <footer className="page-footer  blue-grey darken-4">

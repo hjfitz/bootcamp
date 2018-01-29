@@ -1,12 +1,11 @@
 
 /**
  * Keep the server in it's own file.
- * Eventually, we will add a socket server for the chat app
  */
 
 // main deps
 const http = require('http');
-require('local-env-var')();
+require('local-env-var');
 
 // load our server stuff
 const app = require('../app');

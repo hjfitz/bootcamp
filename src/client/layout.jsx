@@ -1,12 +1,12 @@
 import React from 'react';
-import { Header, Footer, List } from './partial';
+import { Header, Footer } from './partial';
 
 export default ({ children }) => (
-  <div id='react-app'>
+  <div id="react-app">
     <Header />
-      <main className="container">
-        {children}
-      </main>
+    <main className="container">
+      {children}
+    </main>
     <Footer />
   </div>
 );
