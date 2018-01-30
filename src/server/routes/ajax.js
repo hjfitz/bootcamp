@@ -6,13 +6,13 @@ const logger = require('../logger')('Ajax Lesson');
 
 const router = express.Router();
 
-let names = ['Sam Stenton'];
+let names = ['John Doe'];
 /**
  * routes
  */
 router.get('/hello/:name', (req, res) => {
   logger(`Saying hello to ${req.params.name}`);
-  res.json(`Hello ${req.params.name}`);
+  res.send(`Hello ${req.params.name}`);
 });
 
 router.post('/names', (req, res) => {

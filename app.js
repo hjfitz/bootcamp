@@ -7,6 +7,7 @@ const compression = require('compression')();
 const path = require('path');
 const api = require('./src/server/routes');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 // const logger = require('./src/server/logger')('express');
 
 /**
@@ -21,6 +22,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+
+// CORS
+app.use(corse());
+
 /**
  * express middleware
  */

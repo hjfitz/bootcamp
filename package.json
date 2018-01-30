@@ -19,6 +19,7 @@
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "contentful": "^5.0.5",
+    "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "express": "^4.16.2",
     "jquery": "^3.2.1",
