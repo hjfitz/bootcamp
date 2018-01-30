@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // CORS
-app.use(corse());
+app.use(cors());
 
 /**
  * express middleware
