@@ -18,7 +18,7 @@ const client = contentful.createClient({
  * helper functions
  */
 const getEntry = entry => async () => {
-  logger(`Attempting to get entry of type ${entry}`)
+  logger(`Attempting to get entry of type ${entry}`);
   const query = { include: 5, content_type: entry };
   const { items } = await client.getEntries(query);
   return items.filter(it => 'fields' in it);
@@ -27,7 +27,7 @@ const getEntry = entry => async () => {
 const getWeeks = getEntry('week');
 const getSessions = getEntry('session');
 
-const sortByWeek = (wk1, wk2) =>  {
+const sortByWeek = (wk1, wk2) => {
   if (wk1.weekName > wk2.weekName) {
     return 1;
   } else if (wk1.weekName < wk2.weekName) {
@@ -42,7 +42,7 @@ contentfulApi.get('/weeks', async (req, res) => {
   const weeks = await getWeeks();
   // remove un-necessary sys object for smaller network transport
   const parsedWeeks = weeks.map(week => week.fields).sort(sortByWeek);
-  
+
   // format sessions nicely
   parsedWeeks.forEach(week => {
     // remove sys object from sessions
