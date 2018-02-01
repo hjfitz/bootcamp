@@ -82,31 +82,31 @@ export default class SessionList extends Component {
 
     let startUrl;
     let endUrl;
+    const files = {};
     if (startPoint) {
       const { url: startFile } = startPoint.fields.file;
       startUrl = window.location.protocol + startFile;
-      const { url: endFile } = endPoint.fields.file;
-      endUrl = window.location.protocol + endFile;
-
       // generate some file download links
-      const files = {
-        start: (
-          <a href={startUrl} download>
-            <div className="download-item">
-              <i className="material-icons">file_download</i>
-              <p>Starting file</p>
-            </div>
-          </a>
-        ),
-        end: (
+      files.start = (
+        <a href={startUrl} download>
+          <div className="download-item">
+            <i className="material-icons">file_download</i>
+            <p>Starting file</p>
+          </div>
+        </a>
+      );
+      if (endPoint) {
+        const { url: endFile } = endPoint.fields.file;
+        endUrl = window.location.protocol + endFile;
+        files.end = (
           <a href={endUrl} download>
             <div className="download-item">
               <i className="material-icons">file_download</i>
               <p>Completed file</p>
             </div>
           </a>
-        ),
-      };
+        );
+      }
       return this.setState({ visibleSession, files });
     }
     return this.setState({ visibleSession });

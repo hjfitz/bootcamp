@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Continued AJAX</title>
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      font-size: 115%;
+    }
+
+    .tasks {
+      max-width: 70%;
+      margin: 14% auto;
+    }
+
+    code a {
+      color: #d32f2f;
+      text-decoration: none;
+    }
+  </style>
+  <script>
+    /**
+     * A few hints to get you going:
+     * To GET something, use:
+     fetch('someURLhere').then(resp => {
+       return resp.json()
+     }).then(someData => {
+       do something with someData
+       someData can be named whatever you want
+       you could do another fetch here...
+       fetch(possibly a hall of fame?, {
+         post headers, might be using a key?
+       }).then(resp => {
+          return resp.json()
+       }).then(data => {
+         you can use data and someData here
+       })
+     })
+     *
+     * To POST some data, remember to include the headers after the url
+     * These just tell the server that you want to send it some JSON data
+     {
+       method: 'POST',
+       body: JSON.stringify({ name: 'Harry', key: 'oohhhhh' })
+       headers: new Headers({
+         'Content-Type: 'application/json'
+       })
+     }
+     *
+     * Something with functions
+     * You declare a function like this:
+     function aCoolFunction(paramater1, parameter2) {
+       // stuff like fetch goes here
+     }
+
+     when you call aCoolFunction, you can give it values:
+     aCoolFunction('https://cirr-it-bootcamp.herokuapp.com/api/ajax2/hall-of-fame')
+
+     and you can use those in the function:
+
+     function aCoolFunction(url) {
+       console.log(url);
+       fetch(url) // ;)
+     }
+     */
+
+    console.log('====== Task 1 ======');
+
+    console.log('====== Task 2 ======');
+
+    console.log('====== Task 3 ======');
+
+    console.log('====== Task 4 ======');
+
+    console.log('====== Task 5 ======');
+
+    console.log('====== Task 6 ======');
+  </script>
+</head>
+
+<body>
+  <section class="tasks">
+    <h1>Your tasks:</h1>
+    <ul>
+      <li>Make a request to
+        <code><a href="https://cirr-it-bootcamp.herokuapp.com/api/ajax2/tasks">https://cirr-it-bootcamp.herokuapp.com/api/ajax2/tasks</a></code> to find out your tasks!</li>
+    </ul>
+  </section>
+</body>
+
+</html>
