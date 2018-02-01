@@ -32,7 +32,7 @@ app.use(cors());
 app.use('/api', api);
 app.use('/public', express.static(pub));
 app.use(compression);
-app.use(logger);
+// app.use(logger);
 
 // used for react - enables client-side routing
 app.get('*', (req, res) => res.sendFile(index));
