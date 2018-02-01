@@ -1,0 +1,32 @@
+
+/**
+ * Keep the server in it's own file.
+ */
+
+// main deps
+const http = require('http');
+require('local-env-var');
+
+// load our server stuff
+const app = require('../app');
+const logger = require('../src/server/logger')('www');
+const socket = require('../src/server/socket');
+
+// default to a given port
+const port = process.env.PORT || 5000;
+
+// set express var here as we need to attach to http server
+app.set('port', port);
+
+// create server object for socket + express
+const server = http.createServer(app);
+
+// start a http server
+server.listen(port);
+
+// start the socket server
+socket.init(server);
+
+// inform us of the running server
+/* eslint-disable */
+server.on("listening", () => logger(`running on port http://localhost:${port}`));

@@ -1,0 +1,200 @@
+.link-card-title {
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+    
+.collapsible>.collection-header {
+  padding-left: 32px;
+}
+
+.collection-header {
+  background-color: #fafafa;
+}
+
+.collection-header > h4 {
+  margin: 0!important;
+  padding: 1.52rem 0 .912rem 0;
+}
+
+.collapsible-header {
+  flex-direction: column;
+  padding-left: 48px!important; 
+}
+
+.collapsible-header:hover {
+  background-color: #fafafa;
+}
+
+.spoiler-button {
+  display: block;
+}
+
+.spoiler {
+  opacity: 0;
+  max-height: 0;
+}
+
+.spoiler.spoilt {
+  transition: 0.75s ease;
+  opacity: 1;
+  max-height: none;
+}
+
+#react {
+  height: 100vh;
+}
+
+#react-app {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+pre.card {
+  padding: 24px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+footer a {
+  color: #fff!important;
+}
+
+.loading-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+nav {
+  background-color: white;
+}
+
+nav a, nav ul a {
+  color: #37474f;
+}
+
+nav a {
+  padding: 15px;
+}
+
+nav > .after {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4568dc, #b06ab3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: block;
+  z-index:1000;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav > .after.hover {
+  position: fixed;
+  top: 0;
+}
+
+.session-list {
+  display: flex;
+  margin-top: 28px;
+}
+
+.session {
+  margin: 12px;
+  overflow-y:auto;
+  max-height:80vh;
+}
+
+.items {
+  margin-left: 12px;
+}
+
+.items ul {
+  line-height: 56px;
+}
+
+.items a {
+  color: #37474f;
+  display: inline-block;
+  width: 100%;
+  transition: 0.3s ease;
+  padding: 12px;
+  line-height: 20px;
+}
+
+.items li:not(:last-child) {
+  border-bottom: solid 1px #cfd8dc;
+}
+.items li {
+  margin-right: 12px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.items a:hover {
+  background-color: #f5f5f5;
+}
+
+.main-list {
+  flex-basis: 33%;
+  min-width: 33%;
+  border-right: solid 1px #cfd8dc;
+  margin: 12px 12px 12px 0;
+}
+
+.tabs {
+  display: flex;
+  height:40px;
+}
+
+.tabs > li {
+  text-align: center;
+  flex: 1;
+  line-height:40px;
+}
+
+.tab>a {
+  font-weight: 500;
+  color: #1565c0!important;
+  transition: 0.3s ease;
+}
+
+.tab.active>a {
+  color: #311b92!important;
+}
+
+.page-footer {
+  padding-top: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.files {
+  display: flex;
+  flex-direction: row;
+}
+
+.files > div {
+  flex: 1;
+  text-align: center;
+}
+
+#react-app {
+  background-color: #fafafa;
+}
+
+.chat-button {
+  background: linear-gradient(to right, #4568dc, #b06ab3); 
+}
