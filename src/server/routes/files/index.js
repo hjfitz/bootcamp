@@ -54,12 +54,10 @@ fileRouter.post('/', upload.single('index'), async (req, res) => {
     const { innerHTML: code } = script;
     const { code: polyfilled } = transformSync(code, { extends: `${__dirname}/.babelrc` });
     head.removeChild(script);
-    console.log(polyfilled);
     const newScript = dom.window.document.createElement('script');
     newScript.textContent = polyfilled;
     head.appendChild(newScript);
   });
-
 
   // pull out the body
   const body = dom.window.document.querySelector('body');
@@ -69,8 +67,12 @@ fileRouter.post('/', upload.single('index'), async (req, res) => {
     body: body.innerHTML,
   };
   // store it in redis!
-  await client.setKey(key, formattedFile);
-  res.json({ status: 'success', filename });
+  try {
+    await client.setKey(key, formattedFile);
+    res.json({ status: 'success', filename });
+  } catch (err) {
+    res.json({ status: 'error', message: err });
+  }
 });
 
 fileRouter.get('/:filename', async (req, res) => {

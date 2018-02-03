@@ -4,6 +4,7 @@ import axios from 'axios';
 export default class Upload extends Component {
   constructor(props) {
     super(props);
+    this.state = { status: '' };
     this.uploadFile = this.uploadFile.bind(this);
   }
 
@@ -15,12 +16,36 @@ export default class Upload extends Component {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    }).then(data => {
-      console.log(data.data.filename);
-    });
+    })
+      .then(data => data.data)
+      .then(data => {
+        if (data.status === 'success') {
+          const { filename } = data;
+          this.setState({ status: 'uploaded', filename, error: '' });
+        } else {
+          const { message } = data;
+          this.setState({ status: 'error', error: message, filename: '' });
+        }
+      });
   }
 
   render() {
+    let message = '';
+    if (this.state.status === 'uploaded') {
+      message = (
+        <div>
+          <h2>Your file has been uploaded!</h2>
+          <h3>Click <a href={`/api/files/${this.state.filename}`}>here</a> to view</h3>
+        </div>
+      );
+    } else if (this.state.status === 'error') {
+      message = (
+        <div>
+          <h2>Your file was not uploaded</h2>
+          <h3>Reason: {this.state.error}</h3>
+        </div>
+      );
+    }
     return (
       <div className="card session-list">
         <div className="card-content upload-area">
@@ -37,6 +62,7 @@ export default class Upload extends Component {
             </div>
             <a href="#!" onClick={this.uploadFile} className="waves-effect waves-light btn chat-button" id="submit">Upload</a>
           </form>
+          {message}
         </div>
       </div>
     );

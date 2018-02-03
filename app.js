@@ -9,7 +9,6 @@ const hbs = require('express-handlebars');
 const api = require('./src/server/routes');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const logger = require('./src/server/logger')('express');
 
 /**
  * app vars
