@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const contentful = require('contentful');
-const logger = require('../logger')('contentful');
+const log = require('../logger')('contentful');
 
 /**
  * route vars
@@ -13,19 +13,19 @@ const client = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE,
   accessToken: process.env.CONTENTFUL_DELIVERY,
 });
+log('Client connected');
 
 /**
  * helper functions
  */
 const getEntry = entry => async () => {
-  logger(`Attempting to get entry of type ${entry}`);
+  log(`Attempting to get entry of type ${entry}`);
   const query = { include: 5, content_type: entry };
   const { items } = await client.getEntries(query);
   return items.filter(it => 'fields' in it);
 };
 
 const getWeeks = getEntry('week');
-const getSessions = getEntry('session');
 
 const sortByWeek = (wk1, wk2) => {
   if (wk1.weekName > wk2.weekName) {

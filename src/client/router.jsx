@@ -12,12 +12,11 @@ import {
 * local imports
 */
 import Layout from './layout';
-import { Home, Chat, Faq } from './pages';
+import { Home, Chat, Faq, Upload } from './pages';
 
 /**
  * CSS imports
  */
-/* eslint-ignore */
 import 'materialize-css/dist/css/materialize';
 import './styles/main';
 
@@ -32,6 +31,7 @@ const app = (
         <Route exact path="/" component={Home} />
         <Route exact path="/chat" component={Chat} />
         <Route exact path="/faq" component={Faq} />
+        <Route exact path="/upload" component={Upload} />
       </Layout>
     </Switch>
   </Router>

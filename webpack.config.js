@@ -1,22 +1,23 @@
 const path = require('path');
+
 const output = path.join(__dirname, 'public');
 
 
 module.exports = {
-  entry: { bundle: ['./src/client/router.jsx']  },
-  output: { 
+  entry: { bundle: ['./src/client/router.jsx'] },
+  output: {
     filename: '[name].js',
-    path:  output
+    path: output,
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".css"]
+    extensions: ['.js', '.jsx', '.json', '.css'],
   },
-  module: { 
-    loaders: [ 
+  module: {
+    loaders: [
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.jsx?$/,
@@ -24,16 +25,19 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: [
-            ['env', { targets: { 
-              browsers: [
-                'chrome > 60',
-                'not ie < 10'
-              ] 
-            } }],
-            'react',
-          ]
-        }
-      } 
-    ] 
-  }
-}
+            ['@babel/preset-env', {
+              useBuiltIns: 'usage',
+              targets: {
+                browsers: [
+                  'last 2 versions',
+                  'ie >= 11',
+                ],
+              },
+            }],
+            '@babel/react',
+          ],
+        },
+      },
+    ],
+  },
+};
