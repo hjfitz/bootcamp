@@ -1,0 +1,207 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Final Session</title>
+  <style>
+    body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+    }
+
+    form {
+      margin: 0 auto;
+      display: block;
+      padding: 20px 0;
+    }
+
+    form>* {
+      display: block;
+      margin: 20px;
+    }
+
+    #username {
+      width: 40%;
+    }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    }
+
+    #post {
+      width: 90%;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      max-width: 850px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background-color: #fff;
+      padding: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      transition: 0.3s ease;
+      padding: 12px 16px;
+      border-radius: 3px;
+      background: linear-gradient(to right, #ff4b1f, #ff9068);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      max-width: 150px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      filter: brightness(130%);
+    }
+
+    .post {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      box-sizing: border-box;
+      margin: 10px 0;
+    }
+  </style>
+  <script>
+    /**
+     * there's a lot to do in this final session, so I've created a number of helper functions for you
+     * mostly to save on the typing!
+     * 
+      getJSON makes getting data with fetch a little cleaner
+      getJSON(url) -> getJSON('/api/posts').then(data => {
+        // do something with data
+      })
+      
+      postJSON makes sending data to the server a little bit cleaner
+      send a post to our server, with username harry, and post 'welcome to the bootcamp'
+      postJSON(url, username, post) -> postJSON('/api/posts', 'Harry', 'Welcome to the bootcamp!');
+
+      addPost will create a some new elements and put them in the page
+     */
+
+    function getJSON(url) {
+      return fetch(url).then(response => {
+        return response.json();
+      });
+    }
+
+    function postJSON(url, username, post) {
+      return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({ username: username, post: post }),
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }).then(response => {
+        return response.json();
+      });
+    }
+
+    function addPost(username, post) {
+      const posts = document.getElementById('posts');
+      const newPost = document.createElement('div');
+      const user = document.createElement('h2');
+      const postBody = document.createElement('p');
+      newPost.classList = 'post';
+      user.textContent = username;
+      postBody.textContent = post;
+      newPost.appendChild(user);
+      newPost.appendChild(postBody);
+      posts.appendChild(newPost);
+    }
+
+    console.log('------ Task 1 ------');
+    console.log('Get a hold on the button in the page and store it in button. Do the same for username and post');
+    console.log('');
+
+    // const user = document.getElementById.......
+
+    console.log('------ Task 2 ------');
+    console.log('Add an event listener on the button click. When this is clicked, you should get the content from username and post. Store their values in variables');
+    console.log('');
+
+    // button.addEventListener('', event => {})
+
+    console.log('------ Task 3 ------');
+    console.log('Ammend the previous click event listener, make it POST the username and post. You can either use postJSON or your own fetch method');
+    console.log('');
+    // postJSON('/api/posts', ..., ...);
+
+    console.log('------ Task 4 ------');
+    console.log('Get a hold of the other button on the page - add another event listener for this. Make it use getJSON (or fetch) to get posts from the server');
+    console.log('');
+
+    // getElementById...
+    // addEventListener...
+    // getJSON('/api/posts').then(data...
+
+    console.log('------ Task 5 ------');
+    console.log('In the previous event listener, when you get the posts, loop through them and use addPost to add them to the page');
+    console.log('');
+
+    // data.forEach(item => {
+    //    const username = item.username;
+    //    const post = item.post;
+    //    ...add to form
+    // })
+
+
+  </script>
+</head>
+
+<body>
+  <div class="main">
+
+    <h1>Bootcamp-book</h1>
+    <div class="create-post">
+      <form>
+        <h2>Create post</h2>
+        <input id="username" type="text" class="form-control" />
+        <textarea id="post" cols="30" rows="10" class="form-control"></textarea>
+        <a href="#!" class="btn create">Submit</a>
+      </form>
+    </div>
+    <h2>Your feed</h2>
+    <a href="#!" class="btn" id="refresh">Refresh</a>
+    <div id="posts"></div>
+
+  </div>
+
+</body>
+
+</html>

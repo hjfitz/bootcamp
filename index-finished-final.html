@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Final Session</title>
+  <script>
+    /**
+     * there's a lot to do in this final session, so I've created a number of helper functions for you
+     * mostly to save on the typing!
+     * 
+      getJSON makes getting data with fetch a little cleaner
+      getJSON(url) -> getJSON('/api/posts').then(data => {
+        // do something with data
+      })
+      
+      postJSON makes sending data to the server a little bit cleaner
+      send a post to our server, with username harry, and post 'welcome to the bootcamp'
+      postJSON(url, username, post) -> postJSON('/api/posts', 'Harry', 'Welcome to the bootcamp!');
+
+      addPost will create a some new elements and put them in the page
+     */
+
+    function getJSON(url) {
+      return fetch(url).then(response => {
+        return response.json();
+      });
+    }
+
+    function postJSON(url, username, post) {
+      return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({ username: username, post: post }),
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }).then(response => {
+        return response.json();
+      });
+    }
+
+    function addPost(username, post) {
+      const posts = document.getElementById('posts');
+      const newPost = document.createElement('div');
+      const user = document.createElement('h2');
+      const postBody = document.createElement('p');
+      newPost.classList = 'post';
+      user.textContent = username;
+      postBody.textContent = post;
+      newPost.appendChild(user);
+      newPost.appendChild(postBody);
+      posts.appendChild(newPost);
+    }
+
+    console.log('------ Task 1 ------');
+    console.log('Get a hold on the button in the page and store it in button. Do the same for username and post');
+    console.log('');
+
+    // const user = document.getElementById.......
+
+    console.log('------ Task 2 ------');
+    console.log('Add an event listener on the button click. When this is clicked, you should get the content from username and post. Store their values in variables');
+    console.log('');
+
+    // button.addEventListener('', event => {})
+
+    console.log('------ Task 3 ------');
+    console.log('Ammend the previous click event listener, make it POST the username and post. You can either use postJSON or your own fetch method');
+    console.log('');
+    // postJSON('/api/posts', ..., ...);
+
+    console.log('------ Task 4 ------');
+    console.log('Get a hold of the other button on the page - add another event listener for this. Make it use getJSON (or fetch) to get posts from the server');
+    console.log('');
+
+    // getElementById...
+    // addEventListener...
+    // getJSON('/api/posts').then(data...
+
+    console.log('------ Task 5 ------');
+    console.log('In the previous event listener, when you get the posts, loop through them and use addPost to add them to the page');
+    console.log('');
+
+    // data.forEach(item => {
+    //    const username = item.username;
+    //    const post = item.post;
+    //    ...add to form
+    // })
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
